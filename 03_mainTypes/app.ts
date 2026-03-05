@@ -1,42 +1,50 @@
-// 1 - успех
-// 'p' - в процессе
-// 'f' - отклонен
-
-enum StatusCode {
-  SUCCESS = 1,
-  IN_PROCESS = "p",
-  FAILED = "f",
-}
-
-const res = {
-  message: "Платеж успешен",
-  statusCode: StatusCode.SUCCESS,
-};
-
-if (res.statusCode === StatusCode.SUCCESS) {
-}
-
-function action(status: StatusCode) {}
-action(StatusCode.SUCCESS);
-action(1); // вот это уже плохо, тут вниматнльно
-// action(3);
-// action('p') - а вот такое уже не пойдет, особоенность enum
-
-//////////////////
-
-// function compute() {
-//   return 3;
+/* Запрос */
+// {
+//     "topicId": 5,
+//     "status": "published" // "draft", "deleted"
 // }
 
-const enum Roles {
-  ADMIN = 1,
-  USER = 2, //compute(),
+/* Ответ */
+// [
+//     {
+//         "question": "Как осуществляется доставка?",
+//         "answer": "быстро!",
+//         "tags": [
+//             "popular",
+//             "new"
+//         ],
+//         "likes": 3,
+//         "status": "published"
+//     }
+// ]
+
+enum QuestionStatus {
+  PUBLISHED = 1,
+  DRAFT = 2,
+  DELETED = 3,
 }
 
-const res2 = Roles.ADMIN;
+async function getFaqs(req: {
+  topicId: number;
+  status: QuestionStatus;
+}): Promise<
+  {
+    question: string;
+    answer: string;
+    tags: string[];
+    likes: number;
+    status: QuestionStatus;
+  }[]
+> {
+  const res = await fetch("/faqs", {
+    method: "POST",
+    body: JSON.stringify(req),
+  });
+  const data = await res.json();
+  return data;
+}
 
-/////////////////
-
-// function test(x: { ADMIN: number }) {}
-
-// test(Roles); // допустимо, но ирл не используют (enum ведет себя как объект )
+getFaqs({
+  topicId: 5,
+  status: QuestionStatus.PUBLISHED,
+});

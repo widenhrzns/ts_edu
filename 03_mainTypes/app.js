@@ -1,36 +1,39 @@
 "use strict";
-// 1 - успех
-// 'p' - в процессе
-// 'f' - отклонен
-Object.defineProperty(exports, "__esModule", { value: true });
-var StatusCode;
-(function (StatusCode) {
-    StatusCode[StatusCode["SUCCESS"] = 1] = "SUCCESS";
-    StatusCode["IN_PROCESS"] = "p";
-    StatusCode["FAILED"] = "f";
-})(StatusCode || (StatusCode = {}));
-const res = {
-    message: "Платеж успешен",
-    statusCode: StatusCode.SUCCESS,
-};
-if (res.statusCode === StatusCode.SUCCESS) {
-}
-function action(status) { }
-action(StatusCode.SUCCESS);
-action(1); // вот это уже плохо, тут вниматнльно
-// action(3);
-// action('p') - а вот такое уже не пойдет, особоенность enum
-//////////////////
-// function compute() {
-//   return 3;
+/* Запрос */
+// {
+//     "topicId": 5,
+//     "status": "published" // "draft", "deleted"
 // }
-var Roles;
-(function (Roles) {
-    Roles[Roles["ADMIN"] = 1] = "ADMIN";
-    Roles[Roles["USER"] = 2] = "USER";
-})(Roles || (Roles = {}));
-const res2 = Roles.ADMIN;
-/////////////////
-// function test(x: { ADMIN: number }) {}
-// test(Roles); // допустимо, но ирл не используют (enum ведет себя как объект )
+Object.defineProperty(exports, "__esModule", { value: true });
+/* Ответ */
+// [
+//     {
+//         "question": "Как осуществляется доставка?",
+//         "answer": "быстро!",
+//         "tags": [
+//             "popular",
+//             "new"
+//         ],
+//         "likes": 3,
+//         "status": "published"
+//     }
+// ]
+var QuestionStatus;
+(function (QuestionStatus) {
+    QuestionStatus[QuestionStatus["PUBLISHED"] = 1] = "PUBLISHED";
+    QuestionStatus[QuestionStatus["DRAFT"] = 2] = "DRAFT";
+    QuestionStatus[QuestionStatus["DELETED"] = 3] = "DELETED";
+})(QuestionStatus || (QuestionStatus = {}));
+async function getFaqs(req) {
+    const res = await fetch("/faqs", {
+        method: "POST",
+        body: JSON.stringify(req),
+    });
+    const data = await res.json();
+    return data;
+}
+getFaqs({
+    topicId: 5,
+    status: QuestionStatus.PUBLISHED,
+});
 //# sourceMappingURL=app.js.map
