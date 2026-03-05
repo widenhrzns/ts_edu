@@ -1,10 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function getFullName(firstname, surname) {
-    return `${firstname} ${surname}`;
+function getFullName(userEntity) {
+    return `${userEntity.firstname} ${userEntity.surname}`;
 }
-const getFullNameArrow = (firstname, surname) => {
-    return `${firstname} ${surname}`;
+const user = {
+    firstname: "widen",
+    surname: "hrzns",
+    city: "Moscow",
+    age: 20,
 };
-console.log(getFullName("widen", "hrzns"));
+console.log(getFullName(user));
 //# sourceMappingURL=app.js.map
