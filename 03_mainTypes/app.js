@@ -1,14 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let info = {
-    officeId: 45,
-    isOpened: false,
-    contacts: {
-        phone: "+79100000000",
-        email: "my@email.ru",
-        address: {
-            city: "Москва",
-        },
-    },
-};
+const skills = ["Dev", "DevOps", "Testing"];
+try {
+    for (const skill of skills) {
+        console.log(skill);
+    }
+}
+finally {
+    console.log("~~~~~~~~~~~~~~~~~~");
+}
+const res = skills
+    .filter((s) => s !== "DevOps")
+    .map((s) => s + "! ")
+    .reduce((a, b) => a + b);
+console.log(res);
 //# sourceMappingURL=app.js.map
