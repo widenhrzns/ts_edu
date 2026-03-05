@@ -1,12 +1,7 @@
-const skills: [number, string] = [1, "Dev"];
+const skills: readonly [number, string] = [1, "Dev"];
 
-// const id = skills[0];
-// const skillName = skills[1];
+// skills[0] = 2; теперь нельзя поменять, только чтение
 
-// skills.push("test");
-// // const skillTest = skills[2];
-// skills.pop();
+const skill: ReadonlyArray<string> = ["Dev", "DevOps"];
 
-const [id, skillName] = skills;
-
-const arr: [number, string, ...boolean[]] = [12, "test2", true, true, false];
+// skill.push('test') не можем :)))

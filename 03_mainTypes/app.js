@@ -1,11 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const skills = [1, "Dev"];
-// const id = skills[0];
-// const skillName = skills[1];
-// skills.push("test");
-// // const skillTest = skills[2];
-// skills.pop();
-const [id, skillName] = skills;
-const arr = [12, "test2", true, true, false];
+// skills[0] = 2; теперь нельзя поменять, только чтение
+const skill = ["Dev", "DevOps"];
+// skill.push('test') не можем :)))
 //# sourceMappingURL=app.js.map
