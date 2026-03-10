@@ -1,29 +1,46 @@
-type httpMethod = "post" | "get";
-
-function fetchWithAuth(url: string, method: httpMethod): 1 | 0 {
-  return 1;
-}
-
-type coolString = string; // ничего не сужаем, но можем подобное вытворять
-
-/* */
-
-type User = {
+interface User {
   name: string;
   age: number;
   skills: string[];
+
+  log: (id: number) => string;
+}
+
+type User2 = {
+  name: string;
+  age: number;
+  skills: string[];
+
+  log: (id: number) => string;
 };
 
-type Role = {
-  name: string; // ПЛОХО - другой смысл
-  id: number;
-};
+interface Role {
+  roleId: number;
+}
 
-type UserWithRole = User & Role;
+interface UserWithRole extends User, Role {
+  createdAt: Date;
+}
 
 const user: UserWithRole = {
   name: "asd",
   age: 33,
   skills: ["1", "2"],
-  id: 3,
+  roleId: 123,
+  createdAt: new Date(),
+
+  log(id) {
+    return "";
+  },
 };
+
+/* */
+interface UserDictionary {
+  [index: number]: User;
+}
+
+type UserDictionary2 = {
+  [index: number]: User;
+};
+
+type UserDictionary3 = Record<number, User>;
