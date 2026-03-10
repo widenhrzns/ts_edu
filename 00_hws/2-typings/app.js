@@ -1,7 +1,8 @@
+"use strict";
 // var makeOrdinal = require("./makeOrdinal");
 // var isFinite = require("./isFinite");
 // var isSafeNumber = require("./isSafeNumber");
-
+Object.defineProperty(exports, "__esModule", { value: true });
 // var TEN: number = 10;
 // var ONE_HUNDRED: number = 100;
 // var ONE_THOUSAND: number = 1000;
@@ -10,7 +11,6 @@
 // var ONE_TRILLION: number = 1000000000000; //     1.000.000.000.000 (12)
 // var ONE_QUADRILLION: number = 1000000000000000; // 1.000.000.000.000.000 (15)
 // var MAX: number = 9007199254740992; // 9.007.199.254.740.992 (15)
-
 // var LESS_THAN_TWENTY: readonly string[] = [
 //   "zero",
 //   "one",
@@ -33,7 +33,6 @@
 //   "eighteen",
 //   "nineteen",
 // ];
-
 // var TENTHS_LESS_THAN_HUNDRED: readonly string[] = [
 //   "zero",
 //   "ten",
@@ -46,7 +45,6 @@
 //   "eighty",
 //   "ninety",
 // ];
-
 // /**
 //  * Converts an integer into words.
 //  * If number is decimal, the decimals will be removed.
@@ -61,7 +59,6 @@
 // ): string {
 //   var words;
 //   var num: number = parseInt(number, 10);
-
 //   if (!isFinite(num)) {
 //     throw new TypeError(
 //       "Not a finite number: " + number + " (" + typeof number + ")",
@@ -75,12 +72,10 @@
 //   words = generateWords(num);
 //   return asOrdinal ? makeOrdinal(words) : words;
 // }
-
 // function generateWords(number: number): string {
 //   var remainder: number | undefined,
 //     word: string | undefined,
 //     words: string[] = arguments[1];
-
 //   // We’re done
 //   if (number === 0) {
 //     return !words ? "zero" : words.join(" ").replace(/,$/, "");
@@ -94,7 +89,6 @@
 //     words.push("minus");
 //     number = Math.abs(number);
 //   }
-
 //   if (number < 20) {
 //     remainder = 0;
 //     word = LESS_THAN_TWENTY[number];
@@ -126,9 +120,8 @@
 //     word =
 //       generateWords(Math.floor(number / ONE_QUADRILLION)) + " quadrillion,";
 //   }
-
 //   words.push(word);
 //   return generateWords(remainder, words);
 // }
-
 // module.exports = toWords;
+//# sourceMappingURL=app.js.map
