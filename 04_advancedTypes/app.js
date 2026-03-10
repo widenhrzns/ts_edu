@@ -1,38 +1,19 @@
 "use strict";
+// enum RequestType {
+//   GET = "get",
+//   POST = "post",
+// }
 Object.defineProperty(exports, "__esModule", { value: true });
-function logId(id) {
-    if (typeof id === "string") {
-        console.log(id.toLocaleLowerCase);
-    }
-    else if (typeof id === "number") {
-        console.log(id);
-    }
-    else {
-        console.log(id);
-    }
+function fetchWithAuth(url, method) {
+    return 1;
 }
-function logError(err) {
-    if (Array.isArray(err)) {
-        console.log(err);
-    }
-    else {
-        console.log(err);
-    }
-}
-function logObject(obj) {
-    if ("a" in obj) {
-        console.log(obj.a);
-    }
-    else {
-        console.log(obj.b);
-    }
-}
-function logMultipleIds(a, b) {
-    if (a === b) {
-        console.log(a);
-    }
-    else {
-        console.log(a);
-    }
-}
+fetchWithAuth("feskflse", "post");
+// fetchWithAuth("feskflse", "p");
+const method1 = "post";
+fetchWithAuth("fskfdlf", method1);
+let method2 = "post";
+fetchWithAuth("fskfdlf", method2);
+/* НОО!!!!! */
+let method3 = "3";
+fetchWithAuth("fksl;df", method3);
 //# sourceMappingURL=app.js.map

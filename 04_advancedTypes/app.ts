@@ -1,33 +1,20 @@
-function logId(id: string | number | boolean) {
-  if (typeof id === "string") {
-    console.log(id.toLocaleLowerCase);
-  } else if (typeof id === "number") {
-    console.log(id);
-  } else {
-    console.log(id);
-  }
+// enum RequestType {
+//   GET = "get",
+//   POST = "post",
+// }
+
+function fetchWithAuth(url: string, method: "post" | "get"): 1 | 0 {
+  return 1;
 }
 
-function logError(err: string | string[]) {
-  if (Array.isArray(err)) {
-    console.log(err);
-  } else {
-    console.log(err);
-  }
-}
+fetchWithAuth("feskflse", "post");
+// fetchWithAuth("feskflse", "p");
 
-function logObject(obj: { a: number } | { b: number }) {
-  if ("a" in obj) {
-    console.log(obj.a);
-  } else {
-    console.log(obj.b);
-  }
-}
+const method1 = "post";
+fetchWithAuth("fskfdlf", method1);
 
-function logMultipleIds(a: string | number, b: string | boolean) {
-  if (a === b) {
-    console.log(a);
-  } else {
-    console.log(a);
-  }
-}
+let method2 = "post";
+fetchWithAuth("fskfdlf", method2 as "post");
+/* НОО!!!!! */
+let method3 = "3";
+fetchWithAuth("fksl;df", method3 as "post");
