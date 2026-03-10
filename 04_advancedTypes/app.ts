@@ -1,20 +1,29 @@
-// enum RequestType {
-//   GET = "get",
-//   POST = "post",
-// }
+type httpMethod = "post" | "get";
 
-function fetchWithAuth(url: string, method: "post" | "get"): 1 | 0 {
+function fetchWithAuth(url: string, method: httpMethod): 1 | 0 {
   return 1;
 }
 
-fetchWithAuth("feskflse", "post");
-// fetchWithAuth("feskflse", "p");
+type coolString = string; // ничего не сужаем, но можем подобное вытворять
 
-const method1 = "post";
-fetchWithAuth("fskfdlf", method1);
+/* */
 
-let method2 = "post";
-fetchWithAuth("fskfdlf", method2 as "post");
-/* НОО!!!!! */
-let method3 = "3";
-fetchWithAuth("fksl;df", method3 as "post");
+type User = {
+  name: string;
+  age: number;
+  skills: string[];
+};
+
+type Role = {
+  name: string; // ПЛОХО - другой смысл
+  id: number;
+};
+
+type UserWithRole = User & Role;
+
+const user: UserWithRole = {
+  name: "asd",
+  age: 33,
+  skills: ["1", "2"],
+  id: 3,
+};
