@@ -1,46 +1,34 @@
 interface User {
-  name: string;
-  age: number;
-  skills: string[];
-
-  log: (id: number) => string;
+  login: string;
+  password?: string;
 }
 
-type User2 = {
-  name: string;
-  age: number;
-  skills: string[];
-
-  log: (id: number) => string;
-};
-
-interface Role {
-  roleId: number;
-}
-
-interface UserWithRole extends User, Role {
-  createdAt: Date;
-}
-
-const user: UserWithRole = {
-  name: "asd",
-  age: 33,
-  skills: ["1", "2"],
-  roleId: 123,
-  createdAt: new Date(),
-
-  log(id) {
-    return "";
-  },
+const user: User = {
+  login: "fkdslfs",
+  // password: '12345678'
 };
 
 /* */
-interface UserDictionary {
-  [index: number]: User;
+function multiply(first: number, second?: number): number {
+  if (!second) {
+    return first * first;
+  }
+  return first * second;
 }
 
-type UserDictionary2 = {
-  [index: number]: User;
-};
+/* */
+interface UserPro {
+  login: string;
+  password?: {
+    type: "primary" | "secondary";
+  };
+}
 
-type UserDictionary3 = Record<number, User>;
+function testPass(user: UserPro) {
+  const t = user.password?.type;
+}
+
+/* */
+function test(param?: string) {
+  const t = param ?? multiply(5);
+}
