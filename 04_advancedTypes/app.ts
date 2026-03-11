@@ -1,60 +1,28 @@
-// Запрос в виде платежа
-// {
-//     "sum": 10000,
-//     "from": 2,
-//     "to": 4
-// }
-// Ответ
-// {
-//     "status": "success",
-//     "data": {
-//         "databaseId": 567,
-//         "sum": 10000,
-//         "from": 2,
-//         "to": 4
-//     }
-// },
-// {
-//     "status": "failed",
-//     "data": {
-//         "errorMessage": "Недостаточно средств",
-//         "errorCode": 4
-//     }
-// }
-
-interface IPayment {
-  sum: string;
-  from: number;
-  to: number;
+function logId(id: string | number): void {
+  console.log(id);
 }
 
-enum PaymentStatus {
-  SUCCESS = "success",
-  FAILED = "failed",
+const a = logId(1);
+
+function multiply(first: number, second?: number) {
+  if (!second) {
+    return first * first;
+  }
 }
 
-interface IDataSuccess extends IPayment {
-  databaseId: number;
-}
-interface IDataFailed {
-  errorMessage: string;
-  errorCode: number;
-}
+/**/
+type voidFunc = () => void;
 
-interface IPaymentRequest extends IPayment {}
+const f1: voidFunc = () => {};
 
-// interface IResponse {
-//   status: PaymentStatus; // но может упасть как succes так и failed а data не зависит
-//   data: IDataSuccess | IDataFailed;
-// }
+const f2: voidFunc = () => true;
+const b = f2();
 
-interface IResponseSuccess {
-  status: PaymentStatus.SUCCESS;
-  data: IDataSuccess;
-}
-interface IResponseFailed {
-  status: PaymentStatus.FAILED;
-  data: IDataFailed;
-}
+/** */
+const skills = ["Dev", "DevOps"];
 
-// function get(): IResponseSuccess | IResponseFailed{}
+const user = {
+  s: ["s"],
+};
+
+skills.forEach((skill) => user.s.push(skill));
