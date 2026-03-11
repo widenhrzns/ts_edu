@@ -1,34 +1,60 @@
-interface User {
-  login: string;
-  password?: string;
+// Запрос в виде платежа
+// {
+//     "sum": 10000,
+//     "from": 2,
+//     "to": 4
+// }
+// Ответ
+// {
+//     "status": "success",
+//     "data": {
+//         "databaseId": 567,
+//         "sum": 10000,
+//         "from": 2,
+//         "to": 4
+//     }
+// },
+// {
+//     "status": "failed",
+//     "data": {
+//         "errorMessage": "Недостаточно средств",
+//         "errorCode": 4
+//     }
+// }
+
+interface IPayment {
+  sum: string;
+  from: number;
+  to: number;
 }
 
-const user: User = {
-  login: "fkdslfs",
-  // password: '12345678'
-};
-
-/* */
-function multiply(first: number, second?: number): number {
-  if (!second) {
-    return first * first;
-  }
-  return first * second;
+enum PaymentStatus {
+  SUCCESS = "success",
+  FAILED = "failed",
 }
 
-/* */
-interface UserPro {
-  login: string;
-  password?: {
-    type: "primary" | "secondary";
-  };
+interface IDataSuccess extends IPayment {
+  databaseId: number;
+}
+interface IDataFailed {
+  errorMessage: string;
+  errorCode: number;
 }
 
-function testPass(user: UserPro) {
-  const t = user.password?.type;
+interface IPaymentRequest extends IPayment {}
+
+// interface IResponse {
+//   status: PaymentStatus; // но может упасть как succes так и failed а data не зависит
+//   data: IDataSuccess | IDataFailed;
+// }
+
+interface IResponseSuccess {
+  status: PaymentStatus.SUCCESS;
+  data: IDataSuccess;
+}
+interface IResponseFailed {
+  status: PaymentStatus.FAILED;
+  data: IDataFailed;
 }
 
-/* */
-function test(param?: string) {
-  const t = param ?? multiply(5);
-}
+// function get(): IResponseSuccess | IResponseFailed{}
