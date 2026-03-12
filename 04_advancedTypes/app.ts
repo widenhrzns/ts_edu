@@ -1,41 +1,39 @@
-let input: unknown;
-
-input = 3;
-input = ["dsf", "dsfsd"];
-
-let res: any = input;
-
-function run(i: unknown) {
-  if (typeof i === "number") {
-    i++;
-  } else {
-    i;
-  }
+function generateError(message: string): never {
+  throw new Error(message);
 }
 
-run(input);
+function dumpError(): never {
+  // return ''
+  while (true) {}
+}
 
+function rec(): never {
+  return rec();
+}
+
+// const a: never = 1
+
+type paymentAction = "refund" | "checkout"; //| "reject";
+
+function processAction(action: paymentAction) {
+  switch (action) {
+    case "refund":
+      // ...
+      break;
+    case "checkout":
+      // ...
+      break;
+    default:
+      const _: never = action;
+      throw new Error("Нет такого Action");
+  }
+}
 /** */
-async function getData() {
-  try {
-    fetch("");
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log(error.message);
-    }
+function isString(x: string | number): boolean {
+  if (typeof x === "string") {
+    return true;
+  } else if (typeof x === "number") {
+    return false;
   }
+  generateError("sdkfls");
 }
-
-async function getDataForce() {
-  try {
-    fetch("");
-  } catch (error) {
-    const e = error as Error;
-    console.log(e.message);
-  }
-}
-
-/** */
-type U1 = unknown | string;
-
-type I1 = unknown & string;
