@@ -1,12 +1,3 @@
-let a = 5;
-let b: string = a.toString();
-let e: string = new String(a).valueOf();
-let f: boolean = new Boolean(a).valueOf();
-
-let c = "fksl;f";
-let d: number = parseInt(c);
-
-/** */
 interface User {
   name: string;
   email: string;
@@ -24,14 +15,27 @@ interface Admin {
   role: number;
 }
 
-const admin: Admin = {
-  ...user,
-  role: 1,
-};
+function logId(id: string | number) {
+  if (isString(id)) {
+    console.log(id);
+  } else {
+    console.log(id);
+  }
+}
 
-function userToAdmin(user: User): Admin {
-  return {
-    name: user.login,
-    role: 1,
-  };
+function isString(x: string | number): x is string {
+  return typeof x === "string";
+}
+
+function isAdmin(user: User | Admin): user is Admin {
+  return "role" in user;
+  // return (user as Admin).role !== undefined
+}
+
+function setRole(user: User | Admin) {
+  if (isAdmin(user)) {
+    user.role = 0;
+  } else {
+    throw new Error("USER IS NOT ADMIN");
+  }
 }

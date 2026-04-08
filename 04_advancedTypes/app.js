@@ -1,21 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const user = /* <User> */ {
+    name: "Vasya",
+    email: "vasya@exp.com",
+    login: "vasya228",
+};
 function logId(id) {
-    console.log(id);
-}
-const a = logId(1);
-function multiply(first, second) {
-    if (!second) {
-        return first * first;
+    if (isString(id)) {
+        console.log(id);
+    }
+    else {
+        console.log(id);
     }
 }
-const f1 = () => { };
-const f2 = () => true;
-const b = f2();
-/** */
-const skills = ["Dev", "DevOps"];
-const user = {
-    s: ["s"],
-};
-skills.forEach((skill) => user.s.push(skill));
+function isString(x) {
+    return typeof x === "string";
+}
+function isAdmin(user) {
+    return "role" in user;
+    // return (user as Admin).role !== undefined
+}
+function setRole(user) {
+    if (isAdmin(user)) {
+        user.role = 0;
+    }
+    else {
+        throw new Error("USER IS NOT ADMIN");
+    }
+}
 //# sourceMappingURL=app.js.map
