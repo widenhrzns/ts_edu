@@ -1,31 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const user = /* <User> */ {
-    name: "Vasya",
-    email: "vasya@exp.com",
-    login: "vasya228",
-};
-function logId(id) {
-    if (isString(id)) {
-        console.log(id);
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus["Success"] = "success";
+    PaymentStatus["Failed"] = "failed";
+})(PaymentStatus || (PaymentStatus = {}));
+function isSuccess(res) {
+    if (res.status === PaymentStatus.Success) {
+        return true;
     }
     else {
-        console.log(id);
+        return false;
     }
 }
-function isString(x) {
-    return typeof x === "string";
-}
-function isAdmin(user) {
-    return "role" in user;
-    // return (user as Admin).role !== undefined
-}
-function setRole(user) {
-    if (isAdmin(user)) {
-        user.role = 0;
+function getIdFromData(res) {
+    if (isSuccess(res)) {
+        return res.data.databaseId;
     }
     else {
-        throw new Error("USER IS NOT ADMIN");
+        throw new Error(res.data.errorMessage);
     }
 }
 //# sourceMappingURL=app.js.map
